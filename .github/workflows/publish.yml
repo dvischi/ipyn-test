@@ -21,7 +21,7 @@ jobs:
         run: pip install nbconvert
   
       - name: Convert all ipynb files to html (and delete ipynb files)
-        run: find . -name '*.ipynb' -type f -execdir jupyter nbconvert --template classic --to html --output-dir='.' {} \; -execdir rm {} \;
+        run: find . -name '*.ipynb' -type f -execdir jupyter nbconvert --template classic --to html --output-dir='.' --TagRemovePreprocessor.remove_input_tags hide-input {} \; -execdir rm {} \;
 
       - name: Push notebooks folder to the build branch
         uses: s0/git-publish-subdir-action@develop
